@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #FAFAF7;
+    color: #001115;
+    overflow-x: hidden;
+  }
+  /* Espaço pro sticky CTA mobile não cobrir conteúdo final */
+  main { padding-bottom: 80px; }
+  @media (min-width: 768px) {
+    main { padding-bottom: 90px; }
+  }
+  ::selection { background: #00657B; color: #fff; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-[1240px] px-5 md:px-8; }
+
+  /* Dourado gradiente — identidade visual da marca */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #F0DA9A 0%, #DBBE7C 35%, #B8973E 70%, #DBBE7C 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #F0DA9A 0%, #DBBE7C 35%, #B8973E 70%, #DBBE7C 100%);
+  }
+  /* Versão sólida e legível do dourado — pra fundos claros (paper/bege) */
+  .text-gold-solid {
+    color: #7A5618;
+  }
+  .border-gold-gradient {
+    border-image: linear-gradient(135deg, #F0DA9A, #DBBE7C, #B8973E, #DBBE7C) 1;
+  }
+
+  /* ===== TIPOGRAFIA TÉCNICA ===== */
+  .h1 {
+    @apply font-extrabold leading-[1.04] tracking-[-0.03em];
+    font-size: clamp(2.2rem, 6vw, 4.4rem);
+  }
+  .h2 {
+    @apply font-extrabold leading-[1.05] tracking-[-0.025em];
+    font-size: clamp(1.7rem, 4.2vw, 2.8rem);
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.25em] text-aurora;
+  }
+  .cota {
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-cota;
+  }
+  .tabular { font-variant-numeric: tabular-nums; }
+
+  /* ===== BOTÕES ===== */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center overflow-hidden
+           rounded-full bg-aurora px-7 py-4 font-semibold uppercase tracking-wider text-white
+           shadow-cta transition-all duration-200 hover:scale-[1.015] active:scale-[0.98];
+    letter-spacing: 0.06em;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: -2px;
+    border-radius: 9999px;
+    background: linear-gradient(120deg, #13B8D9, #00657B, #004F60);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .btn-primary:hover::before { opacity: 0.6; filter: blur(8px); }
+  .btn-primary::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.22) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: shimmer 2.4s linear infinite;
+    pointer-events: none;
+  }
+  .btn-primary-lg { @apply btn-primary text-base md:text-lg px-8 py-5; }
+  .btn-primary-xl { @apply btn-primary text-lg md:text-xl px-10 py-6; }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-aurora/30
+           bg-white px-4 py-2 text-xs font-bold uppercase tracking-widest text-aurora
+           transition-all hover:bg-aurora hover:text-white hover:border-aurora;
+  }
+
+  /* ===== ELEMENTOS DE PRANCHETA ===== */
+  .blueprint-corner {
+    position: absolute;
+    width: 18px; height: 18px;
+    border-color: rgba(0,101,123,.5);
+    border-style: solid;
+    border-width: 0;
+  }
+  .bp-tl { top: 8px; left: 8px; border-top-width: 2px; border-left-width: 2px; }
+  .bp-tr { top: 8px; right: 8px; border-top-width: 2px; border-right-width: 2px; }
+  .bp-bl { bottom: 8px; left: 8px; border-bottom-width: 2px; border-left-width: 2px; }
+  .bp-br { bottom: 8px; right: 8px; border-bottom-width: 2px; border-right-width: 2px; }
+
+  .tech-card {
+    @apply relative rounded-none border border-ink/10 bg-paper p-6;
+    background-image:
+      linear-gradient(rgba(0,101,123,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,101,123,.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 2px solid currentColor;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transform: rotate(-4deg);
+    box-shadow: 1px 1px 0 currentColor;
+  }
+  .stamp-lg {
+    @apply stamp;
+    padding: 12px 24px;
+    font-size: 18px;
+    border-width: 3px;
+    box-shadow: 2px 2px 0 currentColor;
+  }
+
+  /* Linha técnica horizontal com ticks */
+  .tech-rule {
+    position: relative;
+    height: 1px;
+    background: rgba(0,101,123,.15);
+  }
+  .tech-rule::before, .tech-rule::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 1px; height: 7px;
+    background: rgba(0,101,123,.25);
+  }
+  .tech-rule::before { left: 0; }
+  .tech-rule::after { right: 0; }
+
+  /* Marcador de cota tipo "L = 600" */
+  .dimension {
+    @apply font-mono text-[10px] uppercase tracking-[0.15em] text-cota;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dimension::before, .dimension::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.4;
+  }
+
+  /* Cota inline (sem traços laterais) — pra usar em linhas com divider próprio */
+  .dimension-inline {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-cota;
+  }
+  .dimension-divider {
+    @apply inline-block h-3 w-px bg-cota/30;
+  }
+
+  /* Numeração de seção */
+  .section-number {
+    @apply font-mono text-xs font-medium tracking-[0.3em] text-aurora/70;
+  }
+
+  /* Watermark blueprint atrás de seções */
+  .blueprint-bg {
+    background-image:
+      linear-gradient(rgba(19,184,217,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19,184,217,.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .paper-bg {
+    background-color: #FAFAF7;
+    background-image:
+      linear-gradient(rgba(0,101,123,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,101,123,.045) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Linha conectora vertical entre seções */
+  .seam {
+    position: relative;
+    height: 80px;
+  }
+  .seam::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(0,101,123,.22), transparent);
+  }
+}
+
+/* Tubulação animada (fluxo de água) */
+.pipe-flow {
+  stroke-dasharray: 8 6;
+  animation: flow 1.6s linear infinite;
+}
+.pipe-flow-slow {
+  stroke-dasharray: 6 10;
+  animation: flow 3.5s linear infinite;
+}
+
+@keyframes flow {
+  to { stroke-dashoffset: -28; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
