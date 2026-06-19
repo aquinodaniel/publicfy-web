@@ -22,6 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Vídeos originais pesados (no repo usamos as versões comprimidas depoimento-*.mp4)
+# Nomes exatos: git no Windows é case-insensitive, um glob DEPOIMENTO* pegaria os comprimidos
+**/provas-sociais/DEPOIMENTO.mp4
+**/provas-sociais/DEPOIMENTO 2.mp4
+
 # Env / secrets
 .env
 .env.*
@@ -40,3 +45,4 @@ Thumbs.db
 *.swp
 .idea/
 
+**/provas-sociais/_orig/
