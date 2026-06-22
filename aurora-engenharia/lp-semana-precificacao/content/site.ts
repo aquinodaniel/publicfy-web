@@ -13,6 +13,9 @@ export const config = {
   whatsappNumber: '5564992034462',
   // Fim do Lote 1 (véspera do evento).
   lote1EndsAtISO: '2026-08-03T23:59:59-03:00',
+  // Início do evento (Aula 01) — alvo do contador regressivo da Hero.
+  // É o deadline natural das vendas: quando o evento começa, o Lote 1 encerra.
+  eventoStartISO: '2026-08-04T19:30:00-03:00',
   // Datas confirmadas: 4, 5 e 6 de agosto de 2026.
   datasConfirmadas: true,
   // TODO: confirmar regra "Aluno Aurora entra de graça".
@@ -90,7 +93,13 @@ export const hero = {
   continuidade:
     'É a sequência da Semana da Água Quente, lá você aprendeu a entregar, aqui você aprende a cobrar. (não é pré-requisito)',
   proximoLote: `Próximo lote ${pricing.lote2} (${pricing.lote2Pct})`,
-  vagasLabel: 'das vagas já preenchidas'
+  vagasLabel: 'das vagas já preenchidas',
+  // Contador regressivo na Hero (réplica do TimerCard da Semana da Água Quente).
+  timer: {
+    label: 'O Lote 1 encerra em',
+    vagasSuffix: 'das vagas já preenchidas',
+    encerrado: 'As vendas do Lote 1 estão encerradas'
+  }
 };
 
 // --- 2. CONTA DA MESA (peça-estrela: a MECÂNICA, não o resultado) ---

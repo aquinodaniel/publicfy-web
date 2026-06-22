@@ -3,6 +3,7 @@
 import { hero } from '@/content/site';
 import MaskReveal from '@/components/motion/MaskReveal';
 import GrowthChart from '@/components/shared/GrowthChart';
+import HeroTimer from '@/components/shared/HeroTimer';
 
 // ============================================================
 // 1 · HERO 🌑 — texto à esquerda, gráfico de crescimento à direita.
@@ -35,9 +36,9 @@ export default function Hero({ onCTAClick }: { onCTAClick: () => void }) {
         aria-hidden
         className="pointer-events-none absolute -right-40 top-0 h-[700px] w-[700px] rounded-full bg-aurora-glow/[0.05] blur-[140px]"
       />
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-5 pb-16 pt-24 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-12 md:px-8 md:pb-20 md:pt-28">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 px-5 pb-16 pt-24 md:grid-cols-[1.05fr_0.95fr] md:items-stretch md:gap-12 md:px-8 md:pb-20 md:pt-28">
         {/* coluna texto */}
-        <div>
+        <div className="flex flex-col">
           <h1 className="text-balance text-2xl font-black leading-[1.25] tracking-tight md:text-4xl">
             <MaskReveal as="span" trigger="mount" variant="wipe" delay={0}>
               {hero.h1.pre}
@@ -68,6 +69,9 @@ export default function Hero({ onCTAClick }: { onCTAClick: () => void }) {
               {hero.ctaPrimario}
             </button>
           </div>
+
+          {/* Contador regressivo — empurrado pra base (alinha com a frase do gráfico) */}
+          <HeroTimer className="mt-8 max-w-md md:mt-auto md:pt-10" />
         </div>
 
         {/* coluna visual: gráfico de crescimento (a tese em <2s) — enche a altura */}
