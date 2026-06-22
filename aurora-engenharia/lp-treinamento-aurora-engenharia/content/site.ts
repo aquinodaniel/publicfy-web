@@ -21,12 +21,9 @@ export const whatsappLink = `https://api.whatsapp.com/send?phone=${site.whatsapp
 
 /* ---------- NAV ---------- */
 export const nav = {
-  links: [
-    { label: "O método", href: "#metodo" },
-    { label: "Por dentro", href: "#demonstracao" },
-    { label: "Resultados", href: "#casos" },
-    { label: "Investimento", href: "#roi" },
-  ],
+  // Menu superior removido a pedido (item 3). Mantido o array vazio para
+  // não quebrar o map no componente Nav.
+  links: [] as { label: string; href: string }[],
   cta: "Garantir acesso",
 };
 
@@ -69,7 +66,7 @@ export const proofBar = {
 /* ---------- PROBLEMA ---------- */
 export const problem = {
   eyebrow: "O problema real",
-  title: "Por que dois engenheiros entregam o mesmo projeto — e um cobra 10× mais?",
+  title: "Por que dois engenheiros entregam o mesmo projeto e um cobra 10× mais?",
   subtitle:
     "Não é falta de conhecimento técnico. É falta de método: domínio completo do sistema, entrega de alto padrão e um posicionamento que justifica o preço.",
   comparison: {
@@ -99,7 +96,7 @@ export const problem = {
   metric: {
     value: 10,
     suffix: "×",
-    label: "a diferença de honorários entre os dois caminhos — e ela está no método, não no cálculo.", // TODO: revisar copy
+    label: "a diferença de honorários entre os dois caminhos: ela está no método, não no cálculo.", // TODO: revisar copy
   },
 };
 
@@ -137,7 +134,7 @@ export const method = {
     },
   ],
   closing: {
-    text: "As 4 etapas formam um sistema. Domine-as e seu projeto passa a ser contratado pelo valor que entrega — não pelo menor preço.", // TODO: revisar copy
+    text: "As 4 etapas formam um sistema. Domine-as e seu projeto passa a ser contratado pelo valor que entrega, não pelo menor preço.", // TODO: revisar copy
     cta: "Quero aplicar o método",
     href: "#oferta",
   },
@@ -549,7 +546,7 @@ export const roi = {
       label: "Quanto você cobra hoje por projeto",
     },
     valorMeta: {
-      min: 8000,
+      min: 12000,
       max: 30000,
       default: 18000,
       step: 500,

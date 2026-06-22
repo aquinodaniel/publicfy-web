@@ -168,7 +168,7 @@ export function Roi() {
             </div>
 
             <p className="text-sm text-muted-foreground">
-              Investimento único de <span className="font-semibold text-foreground">{brl(calc.custo)}</span>.{" "}
+              <span className="font-semibold text-foreground">Investimento único.</span>{" "}
               {roi.note}
             </p>
           </div>

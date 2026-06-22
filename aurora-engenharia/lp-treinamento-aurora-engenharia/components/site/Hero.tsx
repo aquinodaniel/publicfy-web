@@ -29,24 +29,24 @@ export function Hero() {
   };
 
   return (
-    <section ref={ref} className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+    <section ref={ref} className="relative overflow-hidden pt-24 pb-16 md:pt-24 md:pb-24">
       <HeroBackground />
 
-      <div className="relative mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-14 px-6 md:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
+      <div className="relative mx-auto grid w-full max-w-[1200px] grid-cols-1 items-center gap-12 px-6 md:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
         {/* ---- coluna texto ---- */}
-        <motion.div className="flex flex-col items-start gap-6" variants={container} initial="hidden" animate="show">
+        <motion.div className="flex flex-col items-start gap-4" variants={container} initial="hidden" animate="show">
           <motion.div variants={item}>
             <Eyebrow>{hero.eyebrow}</Eyebrow>
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="font-display text-4xl font-extrabold leading-[1.18] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+            className="font-display text-4xl font-extrabold leading-[1.13] tracking-tight text-foreground sm:text-5xl lg:text-[3.4rem]"
           >
             {hero.title} <span className="text-gold">{hero.titleAccent}</span>
           </motion.h1>
 
-          <motion.p variants={item} className="max-w-xl text-lg leading-relaxed text-foreground/75 md:text-xl">
+          <motion.p variants={item} className="max-w-xl text-base leading-relaxed text-foreground/75 md:text-lg">
             {hero.subtitle}
           </motion.p>
 
@@ -96,7 +96,7 @@ export function Hero() {
           {/* halo de profundidade atrás da maquete */}
           <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-[radial-gradient(60%_55%_at_55%_40%,hsl(var(--primary)/0.12),transparent_70%)] blur-2xl" />
 
-          <motion.div style={{ y: yImage }} className="relative mx-auto h-[440px] w-full sm:h-[540px] md:h-[600px]">
+          <motion.div style={{ y: yImage }} className="relative mx-auto h-[380px] w-full sm:h-[470px] md:h-[500px]">
             <Maquete />
           </motion.div>
         </motion.div>

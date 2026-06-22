@@ -4,9 +4,10 @@
 > Marcações `[TODO]` = dado a confirmar antes do ar. Valores de lote/datas são placeholders.
 
 > **Decisões de build (definidas):**
-> - **Stack:** Next.js (arquitetura do MEDH-P, copy centralizada em `content/site.ts`).
-> - **Metáfora visual (hero + scrollytelling):** **escada de honorário** — degraus subindo de R$ 3.000 → R$ 12.000, cada degrau é uma camada do método. NÃO reusar tubo/válvula da Água Quente.
-> - **Status:** aguardando revisão da copy pelo cliente antes do scaffold.
+> - **Stack:** definida pelo agente de build, priorizando reuso da identidade/conceito da Água Quente (site de referência: lp.auroraengenharia.com/imersao). Copy centralizada em arquivo único de conteúdo (`content/site.ts`).
+> - **Metáfora visual (hero + scrollytelling):** **escada de honorário** — degraus subindo de R$ 3.000 → R$ 12.000, cada degrau é uma camada do método. NÃO reusar tubo/válvula da Água Quente. Componentes-chave: `HonorarioStaircase` + `CountUp`.
+> - **Estrutura (cliente: manter as 8 seções + só adicionar as 3 lacunas):** Top bar · Hero · 3 Noites · Método (5 degraus) · **Prova Social (4a, nova)** · **Qualificação (4b, nova)** · **Objeção dedicada (4c, nova)** · Sobre o Leo · Oferta · FAQ · Footer · Sticky/seams.
+> - **Status:** copy revisada; build da UI/UX em andamento (agente). Ideias de interação em `plans/INTERACOES.md`.
 
 > ## ESPINHA NARRATIVA (norteia toda a copy)
 > **"Você já sabe fazer. Agora precisa saber cobrar."**
@@ -128,6 +129,79 @@
 
 ---
 
+## 4a. PROVA SOCIAL
+
+> Interação (INTERACOES.md): cards em *stagger* de dossiê; o número "antes → depois" sobe em `CountUp`; print tratado como documento técnico (moldura blueprint). Voz Aurora: número, não adjetivo.
+
+**Eyebrow:** `▸ Quem já fez essa conta`
+
+**H2:**
+> Não é teoria. É a conta que já **mudou o honorário** de quem fez.
+
+**Subtítulo:**
+> Engenheiros que dominavam a técnica e cobravam como commodity — até montarem a conta.
+
+**Depoimentos (`[TODO coletar reais]` — estrutura/placeholder, não publicar inventado):**
+1. **`[Nome]` · Eng. Civil · `[Cidade]`** — antes `R$ [X]` → depois `R$ [Y]`
+   > "`[Frase curta, específica: o que mudou na proposta e qual número fechou]`"
+2. **`[Nome]` · `[Formação]` · `[Cidade]`** — antes `R$ [X]` → depois `R$ [Y]`
+   > "`[Frase curta]`"
+3. **`[Nome]` · `[Formação]` · `[Cidade]`** — antes `R$ [X]` → depois `R$ [Y]`
+   > "`[Frase curta]`"
+
+> **Regra:** se ainda não houver depoimento de aluno desta imersão (é inédita), usar resultados de alunos da **Semana da Água Quente / método Aurora** e deixar isso explícito. Print de proposta com cliente anonimizado. **Nunca inventar nome, número ou print.** Enquanto não houver prova real, esta seção sai do ar — não vai com placeholder visível.
+
+---
+
+## 4b. QUALIFICAÇÃO — "Essa imersão é para você se…"
+
+> Interação (INTERACOES.md): duas colunas entrando de lados opostos; coluna "é pra você" com ✓ desenhando o traço (`draw-line`); coluna "não é" dessaturada. Faz o leitor se reconhecer antes do preço.
+
+**Eyebrow:** `▸ Pra quem é`
+
+**H2:**
+> Essa semana resolve um problema específico. Veja se é o **seu.**
+
+**Coluna A — É pra você se:**
+- Você já entrega (ou está construindo) projeto de **alto padrão**, mas cobra perto do mercado comum.
+- Você **trava na hora de passar o preço** — e desconta pra não correr o risco de perder o cliente.
+- Você orça **"no olho"**, sem saber o custo-hora real do seu escritório.
+- Você quer um **critério pra defender o número**, não um discurso de vendas.
+
+**Coluna B — Não é pra você se:**
+- Seu mercado é volume a preço baixo e você **não quer** pegar alto padrão.
+- Você procura fórmula de "cobrar 10x amanhã" **sem montar a conta**.
+- Você não topa dedicar **3 noites ao vivo** (mesmo com replay de 7 dias).
+
+**Fecho:** Se você se viu na primeira coluna, a Aula 01 começa exatamente no seu ponto cego: o custo.
+
+---
+
+## 4c. OBJEÇÃO — a conta contra o medo de cobrar
+
+> Interação (INTERACOES.md): a crença do leitor aparece e é **riscada** por uma linha dourada; a resposta Aurora desliza por baixo. Abaixo, **barras de ancoragem**: o desconto que ele dá sem pensar (barra grande) vs. o que custa entrar (R$ 27, barra mínima). Bloco antes do pricing, no pico de intenção.
+
+**Eyebrow:** `▸ O que provavelmente está te travando`
+
+**H2:**
+> Todo motivo pra não cobrar mais **cai na primeira conta.**
+
+**Crenças riscadas → resposta:**
+- ~~"Se eu cobrar mais, perco o cliente."~~
+  > Você não perde por cobrar mais — perde por não saber **defender** o que cobra. Com lastro no preço e proposta que mostra valor antes do número, o cliente fecha. É o roteiro da Aula 03.
+- ~~"Precificação é feeling, não tem método."~~
+  > Feeling é o que te trava hoje. Na imersão o preço vira **planilha que se justifica linha a linha** — quando o número tem conta, o medo de cobrar some.
+- ~~"Aqui ninguém paga alto padrão."~~
+  > "Aqui ninguém paga" é a âncora do concorrente barato. O cliente de alto padrão existe na sua cidade — ele só não te procura porque sua **proposta** parece commodity.
+
+**Ancoragem (visual):**
+> O desconto que você dá **sem pensar** numa única proposta: `R$ [ex.: 1.500]`.
+> O que custa corrigir a precificação do ano inteiro: **R$ 27.**
+
+**Microcopy de fecho:** `▸ Se errar, são R$ 27. Se acertar, muda o seu próximo orçamento.`
+
+---
+
 ## 5. SOBRE O LEO (Autoridade)
 
 **Eyebrow:** `▸ Mentor`
@@ -152,24 +226,6 @@
 - 7+ · anos à frente da Aurora
 
 **Foto:** `foto-leo.jpeg` · tag `FICHA · 001`
-
----
-
-## 5b. PROVA SOCIAL `[TODO build — maior lacuna de conversão da página]`
-
-> A landing hoje não tem nenhuma voz de terceiro: toda a credibilidade está na bio do Leo (o vendedor falando do próprio produto). Para um produto cuja promessa é "você vai conseguir cobrar mais", a objeção silenciosa é *"funciona pra alguém como eu?"*. Inserir prova aqui, logo antes da Oferta (encaixa no seam `▸ quem já fez essa conta`).
-
-**Eyebrow:** `▸ Quem já fez essa conta`
-
-**H2:**
-> Não é teoria. É a conta que já mudou o honorário de quem fez.
-
-**Conteúdo (`[TODO coletar]`):**
-- 2–3 depoimentos curtos de alunos da **Semana da Água Quente** (capítulo 1) — padrão da marca: argumento por número, não por adjetivo. Ex.: *"Subi o honorário de R$ X pra R$ Y na primeira proposta depois da imersão."*
-- Se houver, print de conversa/proposta fechada com o novo preço (anonimizar cliente).
-- Formato visual: cards no mesmo molde do `Testimonials` da Água Quente.
-
-> Se ainda não houver depoimento de aluno de precificação (imersão inédita), usar resultados da Água Quente + deixar claro que são de alunos do método Aurora. Nunca inventar prova.
 
 ---
 
@@ -218,6 +274,8 @@
 ---
 
 ## 7. FAQ
+
+> **Nota:** as objeções de preço (Q01–Q03) repetem, de propósito, o que a seção **4c. Objeção** já quebra visualmente. É reforço, não erro — a 4c é o bloco-âncora no pico de intenção; o FAQ é a lista de varredura. Manter a redação alinhada entre as duas (não contradizer números/argumentos).
 
 **Eyebrow:** `▸ Dúvidas frequentes`
 **H2:** 8 perguntas que talvez você esteja **fazendo agora.**
@@ -272,7 +330,8 @@
 Equivalente aos `BlueprintSeam` da Água Quente. Linha técnica fina com um rótulo curto que costura o fio "mão → bolso":
 
 - Após Hero → 3 Noites: `▸ você já tem a mão`
-- Após Método (5 camadas) → Sobre o Leo: `▸ quem já fez essa conta`
+- Após Método (5 degraus) → Prova Social: `▸ quem já fez essa conta`
+- Após Objeção → Sobre o Leo: `▸ quem coloca a conta na sua mão`
 - Após Sobre o Leo → Oferta: `▸ agora é o seu bolso`
 
 ---

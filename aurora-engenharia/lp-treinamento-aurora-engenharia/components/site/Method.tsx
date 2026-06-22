@@ -131,8 +131,8 @@ export function Method() {
 
               {/* ---- painel de detalhe do pilar ativo ---- */}
               <div className="relative flex min-h-[300px] items-start overflow-hidden pt-1">
-                {/* número marca d'água */}
-                <span className="pointer-events-none absolute -right-6 -top-10 select-none font-display text-[12rem] font-extrabold leading-none text-primary/[0.05]">
+                {/* número marca d'água — ancorado no canto, inteiro (sem corte) */}
+                <span className="pointer-events-none absolute right-0 top-0 select-none font-display text-[9rem] font-extrabold leading-none text-primary/[0.06]">
                   {method.pillars[active].number}
                 </span>
 
