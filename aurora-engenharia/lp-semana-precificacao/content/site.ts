@@ -18,7 +18,11 @@ export const config = {
   // TODO: confirmar regra "Aluno Aurora entra de graça".
   alunoAuroraGratis: true,
   // Total de vagas do Lote 1 — FONTE ÚNICA (useSeats lê daqui). TODO valor real.
-  vagasTotal: 300
+  vagasTotal: 300,
+  // Webhook de captura do popup de saída (exit-intent). Vazio = não envia (em dev
+  // o lead só vai pro console). TODO produção: colar a URL do endpoint (n8n/Make).
+  // Ref. imersão: https://auto.fypro.com.br/webhook/imersao-aurora-lead
+  leadWebhookUrl: ''
 };
 
 export const brand = {
@@ -496,6 +500,36 @@ export const footer = {
     { label: 'Privacidade', href: '#' },
     { label: 'Termos', href: '#' }
   ]
+};
+
+// --- POPUP DE SAÍDA (exit-intent) — retenção + captura de lead ---
+// Aparece quando o visitante dá sinal de que vai sair (mouse pro topo no desktop,
+// scroll rápido pra cima no mobile). Reforça a oferta e captura o contato.
+export const exitPopup = {
+  eyebrow: 'Última chance',
+  title: 'Espera — antes de fechar',
+  subtitle: `Garanta sua vaga no Lote 1 por ${pricing.lote1}. As 3 noites começam em 4 de agosto e este lote vira ${pricing.lote2} (${pricing.lote2Pct}) quando as vagas zerarem.`,
+  campos: {
+    nome: { label: 'Nome completo', placeholder: 'Como você se chama' },
+    email: { label: 'E-mail', placeholder: 'voce@exemplo.com' },
+    telefone: { label: 'WhatsApp', placeholder: '(64) 99999-9999' }
+  },
+  enviar: 'Garantir minha vaga',
+  enviando: 'Aguarde…',
+  disclaimer: 'Seus dados são usados só pra te enviar o link das aulas e os lembretes. Sem spam.',
+  // Estado mostrado após o envio (não há tela de "obrigado" na imersão — aqui há,
+  // porque a Precificação ainda não redireciona pra um checkout fechado).
+  sucesso: {
+    titulo: 'Vaga pré-reservada ✓',
+    desc: 'Recebemos seu contato — o link das aulas chega no seu WhatsApp e e-mail. Quer fechar agora?',
+    cta: `Garantir vaga · ${pricing.lote1}`
+  },
+  // Mensagens de erro de validação (campo a campo).
+  erros: {
+    nome: 'Digite seu nome completo.',
+    email: 'Digite um e-mail válido.',
+    telefone: 'Digite um WhatsApp com DDD.'
+  }
 };
 
 // --- STICKY CTA ---

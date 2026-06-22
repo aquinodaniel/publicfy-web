@@ -1,8 +1,10 @@
 'use client';
 
-import { useCheckout } from '@/lib/hooks';
+import { useCallback, useRef, useState } from 'react';
+import { useCheckout, useExitIntent } from '@/lib/hooks';
 
 import ScrollProgressBar from '@/components/motion/ScrollProgressBar';
+import LeadPopup from '@/components/site/LeadPopup';
 import TopBar from '@/components/site/TopBar';
 import Hero from '@/components/site/Hero';
 import Reframe from '@/components/site/Reframe';
@@ -27,8 +29,25 @@ function ThemeFade({ to }: { to: 'light' | 'dark' }) {
   );
 }
 
+// Teto de aberturas do popup de saída por sessão (espelha a Imersão: 3).
+const MAX_EXIT_POPUPS = 3;
+
 export default function Page() {
   const onCTA = useCheckout();
+
+  // Popup de saída (exit-intent).
+  const [popupOpen, setPopupOpen] = useState(false);
+  const popupCount = useRef(0);
+
+  const triggerExit = useCallback(() => {
+    setPopupOpen((open) => {
+      if (open || popupCount.current >= MAX_EXIT_POPUPS) return open;
+      popupCount.current += 1;
+      return true;
+    });
+  }, []);
+
+  useExitIntent(triggerExit, { initialDelayMs: 10000, cooldownMs: 30000 });
 
   return (
     <>
@@ -61,6 +80,8 @@ export default function Page() {
 
       <Footer />
       <StickyCTA onCTAClick={onCTA} />
+
+      <LeadPopup open={popupOpen} onClose={() => setPopupOpen(false)} onConvert={onCTA} />
     </>
   );
 }

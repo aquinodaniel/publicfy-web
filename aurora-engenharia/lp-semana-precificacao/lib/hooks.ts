@@ -19,6 +19,69 @@ export function useCheckout() {
 }
 
 // ============================================================
+// useExitIntent — dispara um callback quando o visitante dá sinal de saída.
+// Portado da LP da Imersão (lp.auroraengenharia.com/imersao):
+//  · Desktop → mouse sai pelo topo da viewport (clientY <= 0).
+//  · Mobile  → scroll rápido pra cima perto do topo (proxy de "voltar"/sair).
+// Só arma após `initialDelayMs` e respeita `cooldownMs` entre disparos.
+// O teto de aberturas por sessão é controlado por quem consome (ver page.tsx).
+// ============================================================
+export function useExitIntent(
+  onTrigger: () => void,
+  {
+    enabled = true,
+    initialDelayMs = 10000,
+    cooldownMs = 30000,
+    mobileScrollThreshold = 60
+  }: {
+    enabled?: boolean;
+    initialDelayMs?: number;
+    cooldownMs?: number;
+    mobileScrollThreshold?: number;
+  } = {}
+) {
+  useEffect(() => {
+    if (!enabled || typeof window === 'undefined') return;
+
+    let armed = false;
+    let lastTrigger = 0;
+    let lastScrollY = window.scrollY;
+
+    const armTimer = setTimeout(() => {
+      armed = true;
+    }, initialDelayMs);
+
+    function fire() {
+      if (!armed) return;
+      const now = Date.now();
+      if (now - lastTrigger < cooldownMs) return;
+      lastTrigger = now;
+      onTrigger();
+    }
+
+    function onMouseLeave(e: MouseEvent) {
+      if (e.clientY <= 0) fire();
+    }
+
+    function onScroll() {
+      const y = window.scrollY;
+      const delta = y - lastScrollY;
+      lastScrollY = y;
+      if (y < 200 && delta < -mobileScrollThreshold) fire();
+    }
+
+    document.addEventListener('mouseleave', onMouseLeave);
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      clearTimeout(armTimer);
+      document.removeEventListener('mouseleave', onMouseLeave);
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [onTrigger, enabled, initialDelayMs, cooldownMs, mobileScrollThreshold]);
+}
+
+// ============================================================
 // useIsMobile — desktop scrollytelling vira lista linear abaixo do breakpoint.
 // ============================================================
 export function useIsMobile(breakpoint = 1024) {
