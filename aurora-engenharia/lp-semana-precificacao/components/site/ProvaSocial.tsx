@@ -1,6 +1,7 @@
 'use client';
 
 import Reveal from '@/components/motion/Reveal';
+import { asset } from '@/lib/asset';
 
 // ============================================================
 // 5 · PROVA SOCIAL 🌑 — réplica fiel da seção "depoimentos" da Imersão:
@@ -69,7 +70,7 @@ export default function ProvaSocial() {
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src={`/depoimentos/${String(n).padStart(2, '0')}.webp`}
+                          src={asset(`/depoimentos/${String(n).padStart(2, '0')}.webp`)}
                           alt={`Depoimento ${n}`}
                           loading="lazy"
                           decoding="async"

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { topbar } from '@/content/site';
+import { asset } from '@/lib/asset';
 
 // ============================================================
 // 0 · TOP BAR — réplica do header da Semana da Água Quente (imersão):
@@ -45,7 +46,7 @@ export default function TopBar({ onCTAClick }: { onCTAClick: () => void }) {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-aurora-white.png"
+            src={asset('/logo-aurora-white.png')}
             alt="Aurora Engenharia"
             className="h-8 w-auto shrink-0 md:h-10"
           />

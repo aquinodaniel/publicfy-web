@@ -1,6 +1,7 @@
 'use client';
 
 import { leo, config } from '@/content/site';
+import { asset } from '@/lib/asset';
 import SectionShell from '@/components/shared/SectionShell';
 import MaskReveal from '@/components/motion/MaskReveal';
 import CountUp from '@/components/motion/CountUp';
@@ -24,7 +25,7 @@ export default function SobreLeo() {
             {/* placeholder fica atrás; se a imagem não existir, mostra o bg-ink/10 */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={leo.fotoSrc}
+              src={asset(leo.fotoSrc)}
               alt={leo.nome}
               loading="lazy"
               className="relative z-10 h-full w-full object-cover object-top"
